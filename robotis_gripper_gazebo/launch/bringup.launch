@@ -1,0 +1,10 @@
+<launch>
+    <env name="QT_AUTO_SCREEN_SCALE_FACTOR" value="0"/>
+    <include file="$(find robotis_gripper_description)/launch/upload.launch"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="verbose" value="true"/>
+    </include>
+
+    <node name="urdf_spawner" type="spawn_model" pkg="gazebo_ros" respawn="false" output="screen"
+        args="-urdf -model gripper -param robot_description -z 1.0" launch-prefix="bash -c 'sleep 2.0; $0 $@' "/>
+</launch>

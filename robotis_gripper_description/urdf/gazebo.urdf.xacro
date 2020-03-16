@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:macro name="insert_mimic_joint" params="reference name multiplier offset">
+        <gazebo>
+            <plugin name="mimic_${name}" filename="libgazebo_mimic_joint_plugin.so">
+                <joint>${reference}</joint>
+                <mimicJoint>${name}</mimicJoint>
+                <multiplier>${multiplier}</multiplier>
+                <offset>${offset}</offset>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace></robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+    </gazebo>
+</robot>

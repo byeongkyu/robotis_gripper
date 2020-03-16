@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="robotis_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find robotis_gripper_description)/urdf/_gripper.urdf.xacro" />
+
+    <link name="world"/>
+
+    <joint name="world_fixed" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_link" />
+    <robotis_gripper parent="base_link">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </robotis_gripper>
+</robot>
